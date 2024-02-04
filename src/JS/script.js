@@ -4,7 +4,9 @@ document.querySelector('#search').addEventListener('submit', async(event) =>{
     const cityName = document.querySelector('#city_name').value;
 
     if(!cityName){
-        return showAlert('Você prescisa digitar uma cidade...');
+        document.querySelector('#weather').classList.remove('show');
+         showAlert('Você prescisa digitar uma cidade...');
+         return
     }
     const apiKey = 'bbe6e86b0e21f349c89dcfcfe7735168';
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(cityName)}&appid=${apiKey}&units=metric&lang=pt_br`;
@@ -28,6 +30,7 @@ document.querySelector('#search').addEventListener('submit', async(event) =>{
 
         });
     }else{
+        document.querySelector('#weather').classList.remove('show');
         showAlert('não foi possivel localizar...')
     }
 
